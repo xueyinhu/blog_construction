@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>博客骨架</title>
+    <style>
+        h2 {
+            margin-left: 16px;
+        }
+        #title {
+            background-color: antiquewhite;
+            padding: 4px;
+            margin-left: 16px;
+            margin-right: 16px;
+            border: 2px solid gray;
+            border-radius: 12px;
+        }
+        #title>div {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 16px;
+        }
+        #title>div>input {
+            width: 60%;
+        }
+        #title>div:last-child>input {
+            width: 20%;
+        }
+        #title>div:last-child>span:nth-last-child(2) {
+            margin-left: 4%;
+        }
+        #main_text>input {
+            max-width: 10%;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="show_blog_title">博客骨架</h2>
+    <div id="title">
+        <div>
+            <span>网页标题: </span>
+            <input type="text" oninput="title_page(this.value)">
+        </div>
+        <div>
+            <span>博客标题: </span>
+            <input type="text" oninput="title_blog(this.value)">
+        </div>
+        <div>
+            <span>条目数量: </span>
+            <input type="number" value="0" min="0" onchange="count_blog(this.value)">
+            <span>条目深度: </span>
+            <input type="number" value="0" min="0" onchange="deep_blog(this.value)">
+        </div>
+    </div>
+    <div id="columns"></div>
+
+    <script>
+        let old_count_blog = 0
+        let result = {
+            tp: '',
+            tb: '',
+            columns: {
+            }
+        }
+        function title_page(value) {
+            result.tp = value
+            document.getElementsByTagName('title')[0].innerText = value
+        }
+        function title_blog(value) {
+            result.tb = value
+            document.getElementById('show_blog_title').innerText = '博客骨架 (' + value + ')'
+        }
+        function count_blog(n) {
+            n = parseInt(n)
+            if (!(n >= 0) || n == old_count_blog) return
+            if (n > old_count_blog) add_column(n - old_count_blog)
+            else delete_column(old_count_blog - n)
+            old_count_blog = n
+        }
+        function gen_column() {
+        }
+        function add_column(count) {
+        }
+        function delete_column(count) {
+        }
+        function deep_blog(n) {
+        }
+    </script>
+</body>
+</html>
